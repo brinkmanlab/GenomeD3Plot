@@ -1,7 +1,7 @@
-islandplot
-==========
+GenomeD3Plot
+============
 
-Islandplot is an SVG based genome viewer written in javascript using D3
+GenomeD3Plot (formerly Islandplot) is an SVG based genome viewer written in javascript using D3
 
 There are three pieces to the package, a circular genome viewer, a linear
 genome viewer and a linear brush element.  Simply include the js files for
