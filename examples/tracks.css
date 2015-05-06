@@ -1,7 +1,18 @@
-.circularchart {
-    shape-rendering: crispEdges;
+/* Classes for the demo's controls */
+#demo-controls {
+  padding: 10px;
 }
 
+.control-item {
+  padding: 5px;
+}
+
+/* Render the chart as cleanly as possible */
+#circularchart {
+    shape-rendering: geometricPrecision;
+}
+
+/* Text on the demo */
 .mini text {
     font: 9px sans-serif;	
 }
@@ -10,6 +21,8 @@
     font: 12px sans-serif;	
 }
 
+/* Definitions for the plot resize dragger, and
+   resizing shadow */
 .dragbar-line {
     stroke-width: 1;	
     stroke: lightgrey;
@@ -22,6 +35,7 @@
     fill: transparent;
 }
 
+/* Style for the plot move arrow if active */
 .move-cross {
     stroke-width: 1;
     stroke: lightgrey;
@@ -33,6 +47,7 @@
     cursor:move !important;
 }
 
+/* For resizing the linear chart */
 #linearchart {
     cursor: -webkit-grab; cursor: -moz-grab;
 }
@@ -46,6 +61,7 @@
     cursor: hand;
 }
 
+/* Definitions for first stranded track, colour, stroke */
 .track1_pos {
     fill: darksalmon;
     stroke: #d1876d;
@@ -60,12 +76,16 @@
     stroke: #4c602a;*/
 }
 
+/* In a linear track if an intergenic
+   region is defined, give it a colour */
 .track1_none {
     fill: #cccccc;
     fill-opacity: .7;
     stroke-width: 1;
 }
 
+/* And we want to show the user as they hover
+   over a track, change the colour */
 .track1_pos:hover {
     fill: red;
     stroke-width: 1;
@@ -79,21 +99,31 @@
     stroke: red;
 }
 
+/* In a linear track, if there are regulatory
+   elements such as transcription factors and
+   terminators, give them a colour for the stroke */
 .track1_arrow_pos, .track1_arrow_neg, .track3_arrow {
     stroke-width: 1;
     stroke: black;
 }
 
+/* Labels on the linear track */
 .track1_text {
     fill: white;
     font-weight: bold;
     font: 12px arial;
 }
+
+/* Track 2 is also a stranded track, give it
+   a different set of colours */
 .track2_pos {
     fill: #000099;
     fill-opacity: .7;
 }
 
+/* When a linear track is zoomed to the point 
+   it's text is visible an extra class is added
+   to the element we can hook in to */
 .track2_pos_zoomed {
     stroke-width: 1px;
     stroke: #647381;
@@ -116,6 +146,8 @@
     font: 12px arial;
 }
 
+/* Track 3 is a non-stranded track, so no _pos
+   and _neg modifiers on the classes */
 .track3 {
     fill: #3399FF;
     fill-opacity: .7;
@@ -132,10 +164,13 @@
     font: 12px arial;
 }
 
-.track4 {
+/* The GC Plot type track, give the stroke a colour */
+.gcplot {
     stroke: black;
 }
 
+/* Track 5 is the glyphs, classes of a concatenation 
+   of the track name and the type of glyph in the track */
 .track5_vfdb {
     fill: #663300;
 }
@@ -144,14 +179,24 @@
     fill: #FF9933;
 }
 
-.gapTrack {
-    stroke: black;
+/* Give a colour to the glyph track's stroke */
+.linearplot.gapTrack {
+    stroke: grey;
+    fill: lightgrey;
+    opacity: 0.5;
 }
 
+.gapTrack {
+    stroke: grey;
+}
+
+/* Set the stroke width of the axis lines */
 .trackAxis .domain {
     stroke-width: 1;
 }
 
+/* In a linear track, we need to set the
+   colours for the drag brush */
 .brush .background {
     stroke: black;
     stroke-width: 2;
@@ -165,11 +210,16 @@
     fill-opacity: .365;
 }
 
+/* In a circular plot if there's a
+   drag brush for zoomed region, define the
+   colours and style */
 .polarbrush {
     fill: lightgrey;
     opacity: 0.5;
 }
 
+/* In the circular plot, the circular end points
+   for the drag brush */
 .brushEnd {
     fill: "red";
 }
@@ -178,10 +228,15 @@
     fill: "green";
 }
 
+/* If we need to set an element to hidden, give
+   ourselves a class */
 .linear_hidden {
 	visibility: hidden;
 }
 
+/* For regulatory elements in a linear plot,
+   define the colours and stroke for the lollipop
+   head (terminator site) */
 .lollipophead {
   stroke:#000000;
   stroke-opacity: 1;
@@ -205,6 +260,7 @@
   stroke-linejoin:miter;
 }
 
+/* For our tooltips, how should we display them? */
 .d3-tip {
   line-height: 1;
   font: 12px arial;

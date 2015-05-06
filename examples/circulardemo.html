@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>GenomeD3Plot Circularplot Example</title>
+    <script src="../d3/d3.min.js"></script>
+    <script src="../d3/d3-tip.js"></script>
+    <style>
+      body {
+        overflow: hidden;
+        margin: 0;
+        font-size: 14px;
+        font-family: "Helvetica Neue", Helvetica;
+      }
+
+      #circularchart {
+        position: absolute;
+        top: 0px;
+        left: 125px;
+      }
+    </style>
+    <link href="tracks.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="plotbody">
+      <!-- The container that will hold the SVG of the plot -->
+      <div id="circularchart"></div>
+    </div>
+    
+    <!-- Libraries needed for save feature -->
+    <script type="text/javascript" src="../canvg/rgbcolor.js"></script>
+    <script type="text/javascript" src="../canvg/canvg.js"></script>
+    <script type="text/javascript" src="../FileSaver/FileSaver.js"></script>
+
+    <!-- Sample data to be rendered -->
+    <script type="text/javascript" src="data.simple.js"></script>
+
+    <!-- Circular plot library -->
+    <script type="text/javascript" src="../circularplot.js"></script>
+
+    <!-- Initialization code to initialize the plot, this is what you would write
+         and place in your application. -->
+    <script type="text/javascript" src="circularsample.js"></script>
+ 
+
+    <!-- Controls on the demo -->
+    <div id="demo-controls">
+      <div class="control-item"><input type="checkbox" name="showGC" onchange="updateGC(this); return false" checked>Show GC plot</div>
+
+      <div class="control-item"><input type="checkbox" name="showStrand" onchange="updateStrand(this); return false" checked>Show stranded track</div>
+
+      <div class="control-item"><input type="checkbox" name="showvfdb" onchange="updateAdb(this); return false" checked>Show ADB glyph type</div>
+
+      <div class="control-item"><input type="checkbox" name="showgaps" onchange="updateGaps(this); return false" checked>Show contig gap region type</div>
+
+      <div class="control-item"><button name="saveImage" onclick="saveImage(); return false">Save Image</button></div>
+
+      <div class="control-item"><input type="button" onClick="resizePlot(); return false;" value="Resize plot diameter"></button></div>
+
+    </div>
+
+ </body>
+</html>

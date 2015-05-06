@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>GenomeD3Plot Combo Plots Example</title>
+    <script src="../d3/d3.min.js"></script>
+    <script src="../d3/d3-tip.js"></script>
+    <style>
+    body {
+      overflow: hidden;
+      margin: 0;
+      font-size: 14px;
+      font-family: "Helvetica Neue", Helvetica;
+    }
+ 
+    #linearchart {
+      position: absolute;
+      top: 650px;
+      left: 10px;
+    }
+
+    #brush {
+      position: absolute;
+      top: 900px;
+      left: 250px;
+    }
+
+    #circularchart {
+      position: absolute;
+      top: 0px;
+      left: 125px;
+    }
+       </style>
+    <link rel="stylesheet" type="text/css" href="tracks.css">
+  </head>
+  <body>
+    <div id="body">
+      <!-- The containers that will hold the SVG of the plots -->
+      <div id="circularchart"></div>
+      <div id="linearchart"></div>      
+      <div id="brush"></div>
+    </div>
+    
+    <!-- Sample data to be rendered -->
+    <script type="text/javascript" src="data.simple.js"></script>
+
+    <!-- Circular plot library -->
+    <script type="text/javascript" src="../circularplot.js"></script>
+
+    <!-- Linear plot library -->
+    <script type="text/javascript" src="../linearplot.js"></script>
+
+    <!-- Linear brush library -->
+    <script type="text/javascript" src="../linearbrush.js"></script>
+
+    <!-- Initialization code to initialize the plots, this is what you would write
+         and place in your application. Note, pulled from the linear and circular
+         plot demo Gists -->
+    <script type="text/javascript" src="lineardemo.js"></script>
+    <script type="text/javascript" src="circularsample.js"></script>
+
+    <!-- Controls on the demo -->
+    <div id="demo-controls">
+      <div class="control-item"><input type="checkbox" name="showGC" onchange="updateGC(this); return false" checked>Show GC plot</div>
+
+      <div class="control-item"><input type="checkbox" name="showStrand" onchange="updateStrand(this); return false" checked>Show stranded track</div>
+
+      <div class="control-item"><input type="checkbox" name="showvfdb" onchange="updateAdb(this); return false" checked>Show ADB glyph type</div>
+
+      <div class="control-item"><input type="checkbox" name="showgaps" onchange="updateGaps(this); return false" checked>Show contig gap region type</div>
+    </div>
+
+  </body>
+</html>
