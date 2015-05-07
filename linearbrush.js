@@ -52,7 +52,17 @@ function linearBrush(layout, callbackObj) {
 linearBrush.prototype.brushUpdate = function(b) {
     var minExtent = this.brush.extent()[0];
     var maxExtent = this.brush.extent()[1];
-    this.callbackObj.update(minExtent, maxExtent);
+
+    if( Object.prototype.toString.call( this.callbackObj ) === '[object Array]' ) {
+        for(var obj in this.callbackObj) {
+            if(this.callbackObj.hasOwnProperty(obj)) {
+                this.callbackObj[obj].update(minExtent, maxExtent);
+            }
+        }
+    } else {
+        this.callbackObj.update(minExtent, maxExtent);
+    }
+
 }
 
 linearBrush.prototype.update = function(startBP, endBP) {
@@ -64,5 +74,24 @@ linearBrush.prototype.update = function(startBP, endBP) {
 }
 
 linearBrush.prototype.update_finished = function(startBP, endBP) {
+
+}
+
+linearBrush.prototype.addBrushCallback = function(obj) {
+
+    // We allow multiple brushes to be associated with a linear plot, if we have
+    // a brush already, add this new one on.  Otherwise just remember it.
+
+    if('undefined' !== typeof this.callbackObj) {
+
+	if( Object.prototype.toString.call( obj ) === '[object Array]' ) { 
+	    this.callbackObj.push(obj);
+	} else {
+	    var tmpobj = this.callbackObj;
+	    this.callbackObj = [tmpobj, obj];
+	}
+    } else {
+	this.callbackObj = obj;
+    }
 
 }
