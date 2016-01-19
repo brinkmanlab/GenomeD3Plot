@@ -1,4 +1,7 @@
 function ComparativePlot(targetContainer){
+    this.GENOMEHEIGHT = 150;
+    this.COMPARISONHEIGHT = 150;
+
     this.genomes = [];
     this.alignmentData = null;
     this.container = d3.select(targetContainer);
@@ -10,18 +13,36 @@ function ComparativePlot(targetContainer){
 
 ComparativePlot.prototype.createPlot = function(){
     this.svg = this.container.append("svg")
-        .attr("class","comparativeplot");
+        .attr("class","comparativeplot")
+        .attr("width",this.container.node().getBoundingClientRect()['width']+"px");
+};
+
+ComparativePlot.prototype.updatePlotSize = function(){
+    this.svg
+        .attr("width",this.container.node().getBoundingClientRect()['width']+"px")
+        .attr("height",(this.COMPARISONHEIGHT+this.GENOMEHEIGHT)*(this.genomes.length));
 };
 
 ComparativePlot.prototype.addGenome = function(genome){
     genomeContainer = this.svg.append("g")
         .attr("class","genome")
-        .append("text")
+        .attr("transform","translate(0,"+((this.COMPARISONHEIGHT+this.GENOMEHEIGHT)*(this.genomes.length)+30)+")");
+
+    genomeContainer.append("text")
         .attr("class","genomename")
         .text(genome.genomeName);
 
+    genomeContainer.append("rect")
+        .attr("width",this.container.node().getBoundingClientRect()['width']+"px")
+        .attr("height",this.GENOMEHEIGHT - 10)
+        .attr("transform","translate(0,10)")
+        .attr("fill","gray");
+
     genome.setContainer(genomeContainer);
     this.genomes.push(genome);
+
+    comparativeplot.updatePlotSize();
+    return genomeContainer;
 };
 
 //TODO: Add functionality to remove genome from visualization
