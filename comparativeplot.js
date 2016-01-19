@@ -1,6 +1,6 @@
 function ComparativePlot(targetContainer){
     this.genomes = [];
-    this.alignmentFile = null;
+    this.alignmentData = null;
     this.container = d3.select(targetContainer);
     this.svg = null;
     this.xscale = null;
@@ -15,7 +15,10 @@ ComparativePlot.prototype.createPlot = function(){
 
 ComparativePlot.prototype.addGenome = function(genome){
     genomeContainer = this.svg.append("g")
-        .attr("class","genome");
+        .attr("class","genome")
+        .append("text")
+        .attr("class","genomename")
+        .text(genome.genomeName);
 
     genome.setContainer(genomeContainer);
     this.genomes.push(genome);
@@ -26,8 +29,8 @@ ComparativePlot.prototype.removeGenome = function(indexGenome){
     this.genomes.pop(indexGenome);
 };
 
-ComparativePlot.prototype.setAlignmentFile = function(alignmentfile){
-    this.alignmentFile = alignmentfile;
+ComparativePlot.prototype.setAlignmentData = function(alignmentdata){
+    this.alignmentData = alignmentdata;
 };
 
 ComparativePlot.prototype.findLargestGenome = function(){
