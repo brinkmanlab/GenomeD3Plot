@@ -155,7 +155,7 @@ outer_radius: The outer radius of arcs, in px, for the track. For stranded track
 
 mouseclick: Callback for mouse clicks on arcs in a circular plot. Either a function(d) or an object, if an object is given callbackObj.mouseclick(d) will be called where d is the element in the items array.
 
-linear_mouseclock: Same as mouseclick but for a linear plot
+linear_mouseclick: Same as mouseclick but for a linear plot
 
 mouseover: Callback for a mouse over event for a circular plot, same as mouseclick, if an obj callbackObj.mouseover(d) is called otherwise callback(d)
 
